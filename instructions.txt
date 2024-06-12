@@ -1,0 +1,56 @@
+Project Compatibility and Instructions
+
+1. Operating Systems Compatibility:
+   - This project is compatible with the following operating systems:
+     - Windows 10/11
+     - Linux 20.04.6 LTS
+     - Ubuntu 20.04/22.04 LTS
+
+2. Dependencies:
+   To run this project, you need to install the following dependencies:
+   - Python 3.8 or higher
+   - Gym: `pip install gym`
+   - Stable Baselines3: `pip install stable-baselines3`
+   - Matplotlib: `pip install matplotlib`
+   - NumPy: `pip install numpy`
+   - SciPy: `pip install scipy`
+   - Webots R2022a or higher: Download and install from [Cyberbotics Webots](https://cyberbotics.com)
+
+3. Detailed Instructions to Run the Code:
+   a. Ensure you have all dependencies installed. You can use the following command to install them all at once:
+      ```
+      pip install gym stable-baselines3 matplotlib numpy scipy
+      ```
+   b. Download and install Webots from the official website if you haven't done so already.
+   
+   c. Place the `training.py` and `webots_gym.py` files in the same directory.
+
+   d. Ensure Webots is properly configured and the necessary worlds and controllers are set up as per your project requirements.
+
+   e. Run the `training.py` script to start the training process:
+      ```
+      python training.py
+      ```
+      This will train the agent using the DQN algorithm and save the model checkpoints and rewards graph in the `./models` directory.
+
+   f. The training process will print out the steps and mean rewards during the process. Once training is completed, the model will be saved as `dqn_webots_final.zip`.
+
+   g. To test the trained model, you can modify the script to load the saved model and run the testing loop:
+      ```
+      # Uncomment the following lines in training.py to load and test the trained model
+      # model = DQN.load("dqn_webots_final", env=env, verbose=1)
+      # obs = env.reset()
+      # for i in range(1000):
+      #     action, _states = model.predict(obs, deterministic=True)
+      #     obs, reward, done, info = env.step(action)
+      #     if done:
+      #         obs = env.reset()
+      ```
+      Then, run the script again:
+      ```
+      python training.py
+      ```
+
+   h. During testing, the agent's actions and rewards will be printed to the console.
+
+Note: Ensure that the Webots simulator is running and the robot and environment configurations match those expected by the script.
